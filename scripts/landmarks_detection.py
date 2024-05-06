@@ -31,7 +31,7 @@ class mediapipe_detection:
     print('Model ready! took {} seconds'.format(elapsed_time))
 
     self.bridge = CvBridge()
-    self.image_sub = rospy.Subscriber("/image_raw", Image, self.callbackDetection, queue_size=1)
+    self.image_sub = rospy.Subscriber("/camera/rgb/image_rect_color", Image, self.callbackDetection, queue_size=1)
     self.image_pub = rospy.Publisher("/mediapipe/image/compressed", CompressedImage, queue_size=1)
 
   def draw_landmarks_on_image(self, rgb_image, detection_result):
